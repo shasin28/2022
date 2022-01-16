@@ -1,0 +1,34 @@
+class Solution {
+    public int maxDistToClosest(int[] seats) {
+        
+        int c=0;
+        int cmax=0;
+        boolean eo=false,so=false;
+        for(int i=0;i<seats.length;i++)
+        {
+            if(seats[i]==1)
+            {
+                if(so==false)
+                {
+                    cmax=Math.max(cmax,c);
+                    so=true;
+                }
+                else
+                {
+                cmax=Math.max(cmax,(c+1)/2);
+                
+                }
+                c=0;
+               
+            }
+            else
+                c++;
+                
+        }
+        if(cmax<=c)
+        cmax=c;
+        return cmax;
+        
+        
+    }
+}
