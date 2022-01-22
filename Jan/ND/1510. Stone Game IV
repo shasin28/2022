@@ -1,0 +1,23 @@
+class Solution {
+    public boolean winnerSquareGame(int n) {
+        HashMap<Integer, Boolean> dp = new HashMap<>();
+        dp.put(0, false);
+        return dfs(dp, n);
+    }
+
+    public static boolean dfs(HashMap<Integer, Boolean> dp, int remain) {
+        if (dp.containsKey(remain)) {
+            return dp.get(remain);
+        }
+        int sqrt_root = (int) Math.sqrt(remain);
+        for (int i = 1; i <= sqrt_root; i++) {
+            
+            if (!dfs(dp, remain - i * i)) {
+                dp.put(remain, true);
+                return true;
+            }
+        }
+        dp.put(remain, false);
+        return false;
+    }
+}
